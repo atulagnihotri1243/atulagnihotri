@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" style="--text: #030303; --navy: #1d4072; --ivory: #faf6f0; zoom: 1.05;"><head>
+    
+    
+  
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Atul Agnihotri</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&amp;family=Jost:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
 <style>
   :root{
     --ivory:#FAF6F0;
@@ -245,15 +247,16 @@
   .cp-reset{width:100%;margin-top:4px;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-soft);
     background:none;border:1px solid var(--line);border-radius:20px;padding:7px;cursor:pointer;}
   .cp-reset:hover{color:var(--rosegold);border-color:var(--rosegold);}
-</style>
-</head>
-<body>
 
-<div class="veil" id="veil">
+:root{--text:#030303;--navy:#1d4072;--ivory:#faf6f0;}</style>
+</head>
+<body id="artifacts-component-root-html" style="zoom: 1.05;">
+
+<div class="veil hide" id="veil">
   <div class="mono">Atul Agnihotri</div>
   <div class="ampersand">✦</div>
 </div>
-<div class="toast" id="toast">Saved</div>
+
 
 <nav>
   <div class="logo">A<span class="dot">.</span>A<span class="dot">.</span></div>
@@ -262,516 +265,190 @@
 
 <section class="hero adjust-wrap" id="heroSection">
   <img class="hero-photo" id="heroPhoto" src="" alt="" style="display:none;">
-  <div class="hero-upload" id="heroUpload"><span class="hint">Click to add your main photo</span></div>
-  <span class="adjust-hint" id="heroAdjustHint" style="display:none;">Drag to reposition</span>
-  <div class="img-adjust-bar" id="heroAdjustBar" style="display:none;">
-    <button type="button" data-act="zoomin" title="Zoom in">+</button>
-    <button type="button" data-act="zoomout" title="Zoom out">−</button>
-    <button type="button" data-act="reset" title="Reset">⟲</button>
-  </div>
-  <input type="file" id="heroInput" accept="image/*">
+  <div class="hero-upload" id="heroUpload"></div>
+  
+  
+  
   <div class="hero-content">
     <div class="eyebrow">A Little About Me</div>
-    <h1 contenteditable="true" data-placeholder="Your Name">Atul Agnihotri</h1>
-    <div class="role" contenteditable="true" data-placeholder="Your role / what you do">Server &amp; DevOps Engineer · Chandigarh, India</div>
+    <h1 data-placeholder="Your Name">Atul Agnihotri</h1>
+    <div class="role" data-placeholder="Your role / what you do">Server &amp; DevOps Engineer · Himachal Pradesh, India</div>
   </div>
   <div class="scroll-cue"><span>Scroll</span><div class="line"></div></div>
 </section>
 
 <main>
-  <section class="reveal intro-block" id="introBlock">
-    <h2 contenteditable="true" data-placeholder="A warm opening line about yourself.">I believe in building a steady, honest life — one rooted in hard work, quiet ambition, and the people I love.</h2>
-    <p contenteditable="true" data-placeholder="A short paragraph introducing yourself.">I'm someone who finds satisfaction in solving problems calmly and keeping things running smoothly — at work and at home. I value honesty, simplicity, and good conversation, and I'm looking forward to building a life together with someone who feels like home.</p>
+  <section class="reveal intro-block in" id="introBlock">
+    <h2 data-placeholder="A warm opening line about yourself.">I believe in building a steady, honest life — one rooted in hard work, quiet ambition, and the people I love.</h2>
+    <p data-placeholder="A short paragraph introducing yourself.">I'm someone who finds satisfaction in solving problems calmly and keeping things running smoothly — at work and at home. I value honesty, simplicity, and good conversation, and I'm looking forward to building a life together with someone who feels like home.</p>
   </section>
 
-  <section class="reveal vitals" id="vitalsBlock">
-    <div class="vital"><div class="num" contenteditable="true" data-placeholder="27">27</div><div class="label">Age</div></div>
-    <div class="vital"><div class="num" contenteditable="true" data-placeholder="5'5&quot;">5'5"</div><div class="label">Height</div></div>
-    <div class="vital"><div class="num" contenteditable="true" data-placeholder="65 kg">65 kg</div><div class="label">Weight</div></div>
-    <div class="vital"><div class="num" contenteditable="true" data-placeholder="Hindu">Hindu</div><div class="label">Religion</div></div>
-    <div class="vital"><div class="num" contenteditable="true" data-placeholder="Chandigarh">Chandigarh</div><div class="label">Based In</div></div>
+  <section class="reveal vitals in" id="vitalsBlock">
+    <div class="vital"><div class="num" data-placeholder="27">27</div><div class="label">Age</div></div>
+    <div class="vital"><div class="num" data-placeholder="5'5&quot;">5'6"</div><div class="label">Height</div></div>
+    <div class="vital"><div class="num" data-placeholder="65 kg">65 kg</div><div class="label">Weight</div></div>
+    <div class="vital"><div class="num" data-placeholder="Hindu">Hindu</div><div class="label">Religion</div></div>
+    <div class="vital"><div class="num" data-placeholder="Chandigarh">Himachal Pradesh</div><div class="label">Based In</div></div>
   </section>
 
-  <section class="reveal info-section" id="biodataBlock">
+  <section class="reveal info-section in" id="biodataBlock">
     <div class="info-head"><div class="eyebrow">In Detail</div><h2>Biodata</h2></div>
-    <div class="info-table" id="biodataTable"></div>
-    <button class="add-btn" onclick="addInfoRow('biodataTable')">+ Add detail</button>
+    <div class="info-table" id="biodataTable"><div class="info-row">
+    <div class="k" data-placeholder="Field name">Date of Birth</div>
+    <div class="v" data-placeholder="Value">08 Jan 1999</div>
+    </div><div class="info-row">
+    <div class="k" data-placeholder="Field name">Time of Birth</div>
+    <div class="v" data-placeholder="Value">01:14 PM</div>
+    </div><div class="info-row">
+    <div class="k" data-placeholder="Field name">Place of Birth</div>
+    <div class="v" data-placeholder="Value">Pansai</div>
+    </div><div class="info-row">
+    <div class="k" data-placeholder="Field name">Manglik</div>
+    <div class="v" data-placeholder="Value">No</div>
+    </div><div class="info-row">
+    <div class="k" data-placeholder="Field name">Religion</div>
+    <div class="v" data-placeholder="Value">Hindu</div>
+    </div><div class="info-row">
+    <div class="k" data-placeholder="Field name">Caste</div>
+    <div class="v" data-placeholder="Value">Brahman</div>
+    </div><div class="info-row">
+    <div class="k" data-placeholder="Field name">Gotra</div>
+    <div class="v" data-placeholder="Value">Kundaiya</div>
+    </div><div class="info-row">
+    <div class="k" data-placeholder="Field name">Blood Group</div>
+    <div class="v" data-placeholder="Value">B+</div>
+    </div></div>
+    
   </section>
 
-  <section class="reveal info-section" id="familyBlock">
+  <section class="reveal info-section in" id="familyBlock">
     <div class="info-head"><div class="eyebrow">Roots</div><h2>Family Details</h2></div>
-    <div class="info-table" id="familyTable"></div>
-    <button class="add-btn" onclick="addInfoRow('familyTable')">+ Add detail</button>
-    <p class="about-family" contenteditable="true" data-placeholder="A few lines about your family — their values, how you were raised, what home feels like.">We're a close-knit, simple family from Himachal Pradesh. My father has worked as a driver with the Agriculture Department for years, and my mother has held our home together as a homemaker. I have one younger sister. We believe in honesty, respect for elders, and standing by each other — values I hope to carry into my own family one day.</p>
+    <div class="info-table" id="familyTable"><div class="info-row">
+    <div class="k" data-placeholder="Field name"><span style="letter-spacing: 0.39px;">Father Name</span></div>
+    <div class="v" data-placeholder="Value">Rajender Kumar</div>
+    </div><div class="info-row">
+    <div class="k" data-placeholder="Field name"><span style="letter-spacing: 0.39px;">Occupation</span></div>
+    <div class="v" data-placeholder="Value">Driver at Agriculture Department, Palampur</div>
+    </div><div class="info-row">
+    <div class="k" data-placeholder="Field name"><span style="letter-spacing: 0.39px;">Mother Name</span></div>
+    <div class="v" data-placeholder="Value">Sudesh Kumari</div>
+    </div><div class="info-row">
+    <div class="k" data-placeholder="Field name"><span style="letter-spacing: 0.39px;">Mother Occupation</span></div>
+    <div class="v" data-placeholder="Value">Housewife</div>
+    </div><div class="info-row">
+    <div class="k" data-placeholder="Field name"><span style="letter-spacing: 0.39px;">Sister</span></div>
+    <div class="v" data-placeholder="Value">1 younger sister</div>
+    </div></div>
+    
+    <p class="about-family" data-placeholder="A few lines about your family — their values, how you were raised, what home feels like.">Rooted in the hills, building a career in the cloud</p>
   </section>
 
-  <section class="reveal story" id="storyBlock">
-    <div class="story-photo adjust-wrap" id="storyPhoto"><span class="hint">Click to add a<br>personal photo</span></div>
-    <input type="file" id="storyInput" accept="image/*">
+  <section class="reveal story in" id="storyBlock">
+    <div class="story-photo adjust-wrap" id="storyPhoto"></div>
+    
     <div class="story-text">
       <div class="eyebrow">My Story</div>
-      <h2 style="margin-top:10px;" contenteditable="true" data-placeholder="A few lines about your background">Rooted in the hills, building a career in the cloud</h2>
-      <p contenteditable="true" data-placeholder="Tell her about your background, upbringing, and what matters to you.">I grew up in Himachal Pradesh and completed my MCA from Himachal Pradesh Technical University in 2022, after a BCA from Himachal Pradesh University. Over the last few years I've built a career in server administration and DevOps — work that's taught me patience, precision, and the value of staying calm under pressure. Outside of work, I'm someone who enjoys the simple things: good food, quiet evenings, and time with family.</p>
+      <h2 style="margin-top:10px;" data-placeholder="A few lines about your background">I grew up in Himachal Pradesh and completed my MCA from Himachal Pradesh Technical University in 2022, after a BCA from Himachal Pradesh University. Over the last few years I've built a career in server administration and DevOps — work that's taught me patience, precision, and the value of staying calm under pressure. Outside of work, I'm someone who enjoys the simple things: good food, quiet evenings, and time with family.</h2>
+      <p data-placeholder="Tell her about your background, upbringing, and what matters to you.">I'd love to hear from you.</p>
     </div>
   </section>
 
-  <section class="reveal timeline" id="careerBlock">
+  <section class="reveal timeline in" id="careerBlock">
     <div class="timeline-head"><div class="eyebrow">Work</div><h2>Career</h2></div>
-    <div id="careerList"></div>
-    <button class="add-btn" onclick="addCareer()">+ Add experience</button>
+    <div id="careerList"><div class="tl-entry">
+    <div class="period" data-placeholder="2023 — Now">June 2025 — Present</div>
+    <div>
+      <div class="title" data-placeholder="Role / Degree">Server Administrator / DevOps Engineer</div>
+      <div class="org" data-placeholder="Company / Institute">Nexever Technologies</div>
+      <div class="desc" data-placeholder="A line or two about this."><b>Managing Linux and Windows servers, data center operations, and 50+ hardware and cloud servers across providers.</b></div>
+    </div>
+    </div><div class="tl-entry">
+    <div class="period" data-placeholder="2023 — Now">May 2023 — June 2025</div>
+    <div>
+      <div class="title" data-placeholder="Role / Degree">Linux Administrator / DevOps Engineer</div>
+      <div class="org" data-placeholder="Company / Institute">ToXSL Technologies</div>
+      <div class="desc" data-placeholder="A line or two about this."><b>Managed production environments, configured Apache/Nginx, implemented monitoring with Nagios, and handled Docker-based deployments.</b></div>
+    </div>
+    </div></div>
+    
   </section>
 
-  <section class="reveal timeline" id="eduBlock">
+  <section class="reveal timeline in" id="eduBlock">
     <div class="timeline-head"><div class="eyebrow">Learning</div><h2>Education</h2></div>
-    <div id="eduList"></div>
-    <button class="add-btn" onclick="addEducation()">+ Add education</button>
+    <div id="eduList"><div class="tl-entry">
+    <div class="period" data-placeholder="2023 — Now">2022</div>
+    <div>
+      <div class="title" data-placeholder="Role / Degree">MCA</div>
+      <div class="org" data-placeholder="Company / Institute">Himachal Pradesh Technical University</div>
+      <div class="desc" data-placeholder="A line or two about this."></div>
+    </div>
+    </div><div class="tl-entry">
+    <div class="period" data-placeholder="2023 — Now">2020</div>
+    <div>
+      <div class="title" data-placeholder="Role / Degree">BCA</div>
+      <div class="org" data-placeholder="Company / Institute">Himachal Pradesh University</div>
+      <div class="desc" data-placeholder="A line or two about this."></div>
+    </div>
+    </div><div class="tl-entry">
+    <div class="period" data-placeholder="2023 — Now">2010-2016</div>
+    <div>
+      <div class="title" data-placeholder="Role / Degree">schooling (6th to 12th)</div>
+      <div class="org" data-placeholder="Company / Institute">J N V dUNGRIN, HAMIRPUR</div>
+      <div class="desc" data-placeholder="A line or two about this.">Best and life changing experience, undefineable and unforgetable movements.</div>
+    </div>
+    </div></div>
+    
   </section>
 
-  <section class="reveal interests" id="interestsBlock">
+  <section class="reveal interests in" id="interestsBlock">
     <div class="eyebrow">Beyond Work</div>
     <h2 style="margin-top:10px;">Interests &amp; Hobbies</h2>
     <div class="chip-row" id="chipRow">
-      <span class="chip">Trekking<span class="x" onclick="this.parentElement.remove();save()">✕</span></span>
-      <span class="chip">Traveling<span class="x" onclick="this.parentElement.remove();save()">✕</span></span>
-      <span class="chip">Cricket<span class="x" onclick="this.parentElement.remove();save()">✕</span></span>
-      <span class="chip">Technology<span class="x" onclick="this.parentElement.remove();save()">✕</span></span>
-      <span class="chip">Music<span class="x" onclick="this.parentElement.remove();save()">✕</span></span>
-      <span class="chip">Family time<span class="x" onclick="this.parentElement.remove();save()">✕</span></span>
-      <button class="add-chip" onclick="addChip()">+ Add</button>
+      <span class="chip">Traveling</span>
+      
+      <span class="chip">Technology</span>
+      <span class="chip">Music</span>
+      <span class="chip">Family time</span>
+      
     </div>
   </section>
 
-  <section class="reveal gallery" id="galleryBlock">
+  <section class="reveal gallery in" id="galleryBlock">
     <div class="eyebrow" style="text-align:center;display:block;">Gallery</div>
     <h2>In Pictures</h2>
     <div class="sub">A few moments — click any tile to upload a photo</div>
     <div class="gallery-grid" id="galleryGrid"></div>
   </section>
 
-  <section class="reveal contact" id="contactBlock">
+  <section class="reveal contact in" id="contactBlock">
     <div class="eyebrow">Let's Connect</div>
-    <h2 contenteditable="true" data-placeholder="I'd love to hear from you.">I'd love to hear from you.</h2>
+    <h2 data-placeholder="I'd love to hear from you.">+91 70186 51532</h2>
     <div class="contact-grid">
-      <div class="c-item"><span class="l">Phone</span><span class="v" contenteditable="true" data-placeholder="+91 00000 00000">+91 70186 51532</span></div>
-      <div class="c-item"><span class="l">Email</span><span class="v" contenteditable="true" data-placeholder="email@example.com">atul.agnihotri.1243@gmail.com</span></div>
-      <div class="c-item"><span class="l">Location</span><span class="v" contenteditable="true" data-placeholder="City, State">Chandigarh, India</span></div>
-      <div class="c-item"><span class="l">Address</span><span class="v" contenteditable="true" data-placeholder="Full address">VPO Pansai, Teh. Nadaun, District Hamirpur</span></div>
+      <div class="c-item"><span class="l">Phone</span><span class="v" data-placeholder="+91 00000 00000">atul.agnihotri.1243@gmail.com</span></div>
+      <div class="c-item"><span class="l">Email</span><span class="v" data-placeholder="email@example.com">Himachal Pradesh, India</span></div>
+      <div class="c-item"><span class="l">Location</span><span class="v" data-placeholder="City, State">© Atul Agnihotri</span></div>
+      <div class="c-item"><span class="l">Address</span><span class="v" data-placeholder="Full address">VPO Pansai, Teh. Nadaun, District Hamirpur</span></div>
     </div>
     <div class="social-links" id="socialLinks">
-      <div class="s-link"><span class="l">LinkedIn</span><span class="v" contenteditable="true" data-placeholder="linkedin.com/in/your-name"></span></div>
-      <div class="s-link"><span class="l">Instagram</span><span class="v" contenteditable="true" data-placeholder="instagram.com/your.handle"></span></div>
+      <div class="s-link"><span class="l">LinkedIn</span><span class="v" data-placeholder="linkedin.com/in/your-name">https://www.linkedin.com/in/atul-agnihotri-a6483517a?utm_source=share&amp;utm_campaign=share_via&amp;utm_content=profile&amp;utm_medium=android_app</span></div>
+      <div class="s-link"><span class="l">Instagram</span><span class="v" data-placeholder="instagram.com/your.handle">https://www.instagram.com/atul.agnihotri.1243?igsh=Y3d4ZmFjcGh6dmFu</span></div>
     </div>
   </section>
 </main>
 
-<footer contenteditable="true" data-placeholder="© Atul Agnihotri">© Atul Agnihotri</footer>
+<footer data-placeholder="© Atul Agnihotri">© Atul Agnihotri</footer>
 
-<div class="sticky-actions">
-  <button class="pill-btn" onclick="window.print()">Save as PDF</button>
-  <button class="pill-btn" id="exportBtn" style="background:var(--sage-deep);border-color:var(--sage-deep);">Export Site (View-Only)</button>
-</div>
 
-<button class="customize-toggle" id="customizeToggle" title="Customize appearance">✎</button>
-<div class="customize-panel" id="customizePanel">
-  <div class="cp-title">Customize Appearance</div>
-  <div class="cp-row">
-    <label>Font size</label>
-    <div class="cp-fs-controls">
-      <button type="button" id="fsMinus">−</button>
-      <button type="button" id="fsPlus">+</button>
-    </div>
-  </div>
-  <div class="cp-row">
-    <label>Text color</label>
-    <input type="color" id="cpTextColor" value="#2b2a26">
-  </div>
-  <div class="cp-row">
-    <label>Heading color</label>
-    <input type="color" id="cpHeadColor" value="#222a35">
-  </div>
-  <div class="cp-row">
-    <label>Background</label>
-    <input type="color" id="cpBgColor" value="#faf6f0">
-  </div>
-  <button class="cp-reset" id="cpReset">Reset to default</button>
-</div>
+
+
+
+
+
+
 
 <script>
-const $ = (s,el=document)=>el.querySelector(s);
-const $$ = (s,el=document)=>[...el.querySelectorAll(s)];
-
-function toast(msg){
-  const t=$('#toast'); t.textContent=msg; t.classList.add('show');
-  clearTimeout(toast._h); toast._h=setTimeout(()=>t.classList.remove('show'),1500);
-}
-function fileToDataURL(file,cb){const r=new FileReader();r.onload=e=>cb(e.target.result);r.readAsDataURL(file);}
-function escapeHtml(str){const d=document.createElement('div');d.textContent=str;return d.innerHTML;}
-
-/* intro veil */
-window.addEventListener('load',()=>{ setTimeout(()=>$('#veil').classList.add('hide'),1500); });
-
-/* scroll reveal */
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:0.12});
-$$('.reveal').forEach(s=>io.observe(s));
-
-/* ---------------- photo drag-to-reposition + zoom ---------------- */
-function applyImgTransform(img){
-  const x = parseFloat(img.dataset.x||0), y = parseFloat(img.dataset.y||0), s = parseFloat(img.dataset.s||1);
-  img.style.transform = `translate(${x}px,${y}px) scale(${s})`;
-}
-function enableImgAdjust(img){
-  if(!img || img.dataset.adjustBound) return;
-  img.dataset.adjustBound='1';
-  img.dataset.x = img.dataset.x || 0;
-  img.dataset.y = img.dataset.y || 0;
-  img.dataset.s = img.dataset.s || 1;
-  applyImgTransform(img);
-  let dragging=false, startX=0, startY=0, baseX=0, baseY=0;
-
-  function down(clientX,clientY){
-    dragging=true; img.classList.add('dragging');
-    startX=clientX; startY=clientY;
-    baseX=parseFloat(img.dataset.x||0); baseY=parseFloat(img.dataset.y||0);
-  }
-  function move(clientX,clientY){
-    if(!dragging) return;
-    img.dataset.x = baseX + (clientX-startX);
-    img.dataset.y = baseY + (clientY-startY);
-    applyImgTransform(img);
-  }
-  function up(){ if(!dragging) return; dragging=false; img.classList.remove('dragging'); save(); }
-
-  img.addEventListener('mousedown', e=>{ e.preventDefault(); down(e.clientX,e.clientY); });
-  window.addEventListener('mousemove', e=> move(e.clientX,e.clientY));
-  window.addEventListener('mouseup', up);
-  img.addEventListener('touchstart', e=>{ const t=e.touches[0]; down(t.clientX,t.clientY); }, {passive:true});
-  img.addEventListener('touchmove', e=>{ const t=e.touches[0]; move(t.clientX,t.clientY); }, {passive:true});
-  img.addEventListener('touchend', up);
-  img.addEventListener('wheel', e=>{
-    e.preventDefault();
-    let s=parseFloat(img.dataset.s||1);
-    s = Math.min(3, Math.max(1, s + (e.deltaY<0?0.08:-0.08)));
-    img.dataset.s=s; applyImgTransform(img); save();
-  }, {passive:false});
-
-  const bar = img.parentElement.querySelector('.img-adjust-bar');
-  if(bar){
-    bar.style.display='flex';
-    bar.querySelectorAll('button').forEach(btn=>{
-      btn.onclick = (e)=>{
-        e.stopPropagation();
-        let s=parseFloat(img.dataset.s||1);
-        if(btn.dataset.act==='zoomin') s=Math.min(3,s+0.15);
-        if(btn.dataset.act==='zoomout') s=Math.max(1,s-0.15);
-        if(btn.dataset.act==='reset'){ s=1; img.dataset.x=0; img.dataset.y=0; }
-        img.dataset.s=s; applyImgTransform(img); save();
-      };
-    });
-  }
-  const hint = img.parentElement.querySelector('.adjust-hint');
-  if(hint) hint.style.display='block';
-}
-
-/* hero photo upload */
-$('#heroUpload').addEventListener('click',()=>$('#heroInput').click());
-$('#heroInput').addEventListener('change',e=>{
-  const f=e.target.files[0]; if(!f) return;
-  fileToDataURL(f,url=>{
-    const img=$('#heroPhoto'); img.src=url; img.style.display='block';
-    img.dataset.adjustBound=''; img.dataset.x=0; img.dataset.y=0; img.dataset.s=1;
-    $('#heroSection').classList.add('loaded');
-    const up=$('#heroUpload'); up.classList.add('has-img'); up.innerHTML='<span class="hint">Change photo</span>';
-    enableImgAdjust(img);
-    save(); toast('Photo updated — drag or scroll to adjust');
-  });
-});
-
-/* story photo */
-$('#storyPhoto').addEventListener('click',(e)=>{ if(e.target.closest('.img-adjust-bar')) return; if(e.target.tagName==='IMG' && e.target.dataset.adjustBound) return; $('#storyInput').click(); });
-$('#storyInput').addEventListener('change',e=>{
-  const f=e.target.files[0]; if(!f) return;
-  fileToDataURL(f,url=>{
-    $('#storyPhoto').innerHTML=`<img src="${url}" alt="">
-      <span class="adjust-hint">Drag to reposition</span>
-      <div class="img-adjust-bar"><button type="button" data-act="zoomin">+</button><button type="button" data-act="zoomout">−</button><button type="button" data-act="reset">⟲</button></div>`;
-    enableImgAdjust($('#storyPhoto img'));
-    save(); toast('Photo updated — drag or scroll to adjust');
-  });
-});
-
-/* chips */
-function addChip(){
-  const name=prompt('Add an interest or hobby:'); if(!name) return;
-  const chip=document.createElement('span'); chip.className='chip';
-  chip.innerHTML=`${escapeHtml(name)}<span class="x" onclick="this.parentElement.remove();save()">✕</span>`;
-  $('#chipRow').insertBefore(chip,$('.add-chip'));
-  save();
-}
-
-/* biodata / family info rows */
-function makeInfoRow(key,val){
-  const row=document.createElement('div'); row.className='info-row';
-  row.innerHTML=`
-    <div class="k" contenteditable="true" data-placeholder="Field name">${key}</div>
-    <div class="v" contenteditable="true" data-placeholder="Value">${val}</div>
-    <div class="row-controls">
-      <button type="button" title="Move up" onclick="moveRow(this,-1)">▲</button>
-      <button type="button" title="Move down" onclick="moveRow(this,1)">▼</button>
-      <button type="button" class="row-remove" title="Remove" onclick="this.closest('.info-row').remove();save()">✕</button>
-    </div>`;
-  return row;
-}
-function moveRow(btn, dir){
-  const row = btn.closest('.info-row');
-  if(dir===-1 && row.previousElementSibling) row.parentElement.insertBefore(row, row.previousElementSibling);
-  if(dir===1 && row.nextElementSibling) row.parentElement.insertBefore(row.nextElementSibling, row);
-  save();
-}
-function addInfoRow(tableId,key='New Field',val=''){
-  $('#'+tableId).appendChild(makeInfoRow(key,val)); save();
-}
-function fillDefaultBiodata(){
-  const rows=[
-    ['Date of Birth','08 Jan 1999'],['Time of Birth','01:14 PM'],['Place of Birth','Pansai'],
-    ['Manglik','No'],['Religion','Hindu'],['Caste','Brahman'],['Gotra','Kundaiya'],
-    ['Height','5 ft 5 in'],['Weight','65 kg'],['Blood Group','B+'],
-    ['Education','M.C.A from H.P.T.U, Hamirpur'],['Profession','Server Administrator, Mohali (IT Company)']
-  ];
-  rows.forEach(([k,v])=> $('#biodataTable').appendChild(makeInfoRow(k,v)));
-}
-function fillDefaultFamily(){
-  const rows=[
-    ['Father\'s Name','Rajender Kumar'],['Father\'s Occupation','Driver at Agriculture Department, Palampur'],
-    ['Mother\'s Name','Sudesh Kumari'],['Mother\'s Occupation','Housewife'],['Siblings','1 younger sister']
-  ];
-  rows.forEach(([k,v])=> $('#familyTable').appendChild(makeInfoRow(k,v)));
-}
-
-/* timeline entries */
-function makeEntry(period,title,org,desc){
-  const div=document.createElement('div'); div.className='tl-entry';
-  div.innerHTML=`
-    <div class="period" contenteditable="true" data-placeholder="2023 — Now">${period}</div>
-    <div>
-      <div class="title" contenteditable="true" data-placeholder="Role / Degree">${title}</div>
-      <div class="org" contenteditable="true" data-placeholder="Company / Institute">${org}</div>
-      <div class="desc" contenteditable="true" data-placeholder="A line or two about this.">${desc}</div>
-    </div>
-    <span class="remove" onclick="this.parentElement.remove();save()">remove ✕</span>`;
-  return div;
-}
-function addCareer(p='2024 — Now',t='Role Title',o='Company Name',d='What you do here.'){
-  $('#careerList').appendChild(makeEntry(p,t,o,d)); save();
-}
-function addEducation(p='2020 — 2024',t='Degree',o='Institution',d=''){
-  $('#eduList').appendChild(makeEntry(p,t,o,d)); save();
-}
-
-/* gallery */
-function adjustBarHTML(){
-  return `<span class="adjust-hint">Drag to reposition</span>
-    <div class="img-adjust-bar"><button type="button" data-act="zoomin">+</button><button type="button" data-act="zoomout">−</button><button type="button" data-act="reset">⟲</button></div>`;
-}
-function makeTile(url){
-  const div=document.createElement('div'); div.className='g-tile adjust-wrap';
-  div.innerHTML = url ? `<img src="${url}" alt="">${adjustBarHTML()}<span class="remove" onclick="event.stopPropagation();this.parentElement.remove();save()">✕</span>`
-                       : `<span class="hint">Add photo</span>`;
-  const inp=document.createElement('input'); inp.type='file'; inp.accept='image/*';
-  div.appendChild(inp);
-  div.addEventListener('click',(e)=>{
-    if(e.target.classList.contains('remove')) return;
-    if(e.target.closest('.img-adjust-bar')) return;
-    if(e.target.tagName==='IMG' && e.target.dataset.adjustBound) return;
-    inp.click();
-  });
-  inp.addEventListener('change',e=>{
-    const f=e.target.files[0]; if(!f) return;
-    fileToDataURL(f,u=>{
-      div.innerHTML=`<img src="${u}" alt="">${adjustBarHTML()}<span class="remove" onclick="event.stopPropagation();this.parentElement.remove();save()">✕</span>`;
-      const inp2=document.createElement('input'); inp2.type='file'; inp2.accept='image/*'; div.appendChild(inp2);
-      bindTileInput(div,inp2);
-      enableImgAdjust($('img',div));
-      save();
-    });
-  });
-  if(url) enableImgAdjust($('img',div));
-  return div;
-}
-function bindTileInput(div,inp){
-  inp.addEventListener('change',e=>{
-    const f=e.target.files[0]; if(!f) return;
-    fileToDataURL(f,u=>{
-      div.innerHTML=`<img src="${u}" alt="">${adjustBarHTML()}<span class="remove" onclick="event.stopPropagation();this.parentElement.remove();save()">✕</span>`;
-      const inp2=document.createElement('input'); inp2.type='file'; inp2.accept='image/*'; div.appendChild(inp2);
-      bindTileInput(div,inp2);
-      enableImgAdjust($('img',div));
-      save();
-    });
-  });
-}
-function addGalleryTile(url=''){ const t=makeTile(url); $('#galleryGrid').appendChild(t); }
-
-/* persistence */
-function save(){
-  const data={
-    heroSrc: $('#heroPhoto').src && $('#heroPhoto').style.display!=='none' ? $('#heroPhoto').src : '',
-    heroX: $('#heroPhoto').dataset.x||0, heroY: $('#heroPhoto').dataset.y||0, heroS: $('#heroPhoto').dataset.s||1,
-    storyHtml: $('#storyPhoto').innerHTML,
-    biodataHtml: $('#biodataTable').innerHTML,
-    familyHtml: $('#familyTable').innerHTML,
-    careerHtml: $('#careerList').innerHTML,
-    eduHtml: $('#eduList').innerHTML,
-    chipRowHtml: $('#chipRow').innerHTML,
-    galleryHtml: $('#galleryGrid').innerHTML,
-    editable: $$('[contenteditable="true"]').filter(el=>!el.closest('#careerList,#eduList,#biodataTable,#familyTable')).map(el=>el.innerHTML)
-  };
-  localStorage.setItem('matri_data', JSON.stringify(data));
-}
-let saveTimer;
-document.addEventListener('input',e=>{
-  if(e.target.closest('[contenteditable]')){ clearTimeout(saveTimer); saveTimer=setTimeout(()=>{save();toast('Saved');},800); }
-});
-
-function rebindAdjustableImages(container){
-  $$('img', container).forEach(img=>{
-    img.removeAttribute('data-adjust-bound');
-    if(img.parentElement.querySelector('.img-adjust-bar')) enableImgAdjust(img);
-  });
-}
-
-function load(){
-  const raw=localStorage.getItem('matri_data');
-  if(!raw){
-    addCareer('June 2025 — Present','Server Administrator / DevOps Engineer','Nexever Technologies','Managing Linux and Windows servers, data center operations, and 50+ hardware and cloud servers across providers.');
-    addCareer('May 2023 — June 2025','Linux Administrator / DevOps Engineer','ToXSL Technologies','Managed production environments, configured Apache/Nginx, implemented monitoring with Nagios, and handled Docker-based deployments.');
-    addEducation('2022','MCA','Himachal Pradesh Technical University','');
-    addEducation('2020','BCA','Himachal Pradesh University','');
-    addEducation('2010 — 2017','Schooling, 6th – 12th','Jawahar Navodaya Vidyalaya, Dungrain, Hamirpur','');
-    fillDefaultBiodata();
-    fillDefaultFamily();
-    for(let i=0;i<6;i++) addGalleryTile();
-    return;
-  }
-  try{
-    const data=JSON.parse(raw);
-    if(data.heroSrc){
-      const img=$('#heroPhoto'); img.src=data.heroSrc; img.style.display='block';
-      img.dataset.x=data.heroX||0; img.dataset.y=data.heroY||0; img.dataset.s=data.heroS||1;
-      $('#heroSection').classList.add('loaded');
-      const up=$('#heroUpload'); up.classList.add('has-img'); up.innerHTML='<span class="hint">Change photo</span>';
-      enableImgAdjust(img);
-    }
-    $('#storyPhoto').innerHTML=data.storyHtml;
-    $('#biodataTable').innerHTML=data.biodataHtml||'';
-    $('#familyTable').innerHTML=data.familyHtml||'';
-    $('#careerList').innerHTML=data.careerHtml;
-    $('#eduList').innerHTML=data.eduHtml;
-    $('#chipRow').innerHTML=data.chipRowHtml;
-    $('#galleryGrid').innerHTML=data.galleryHtml;
-    rebindAdjustableImages($('#storyPhoto'));
-    rebindAdjustableImages($('#galleryGrid'));
-    $$('.g-tile',document).forEach(div=>{
-      const inp=$('input',div);
-      if(inp) bindTileInput(div,inp);
-      div.addEventListener('click',(e)=>{
-        if(e.target.classList.contains('remove')) return;
-        if(e.target.closest('.img-adjust-bar')) return;
-        if(e.target.tagName==='IMG' && e.target.dataset.adjustBound) return;
-        const i=$('input',div); if(i) i.click();
-      });
-    });
-    const editables=$$('[contenteditable="true"]').filter(el=>!el.closest('#careerList,#eduList,#biodataTable,#familyTable'));
-    editables.forEach((el,i)=>{ if(data.editable[i]!==undefined) el.innerHTML=data.editable[i]; });
-  }catch(err){ console.error(err); }
-}
-load();
-
-setTimeout(()=>{ $$('.reveal').forEach(s=>{ const r=s.getBoundingClientRect(); if(r.top<window.innerHeight) s.classList.add('in'); }); },50);
-
-/* ---------------- customize panel: font size + colors ---------------- */
-const cpToggle=$('#customizeToggle'), cpPanel=$('#customizePanel');
-cpToggle.addEventListener('click', ()=> cpPanel.classList.toggle('open'));
-document.addEventListener('click', (e)=>{
-  if(cpPanel.classList.contains('open') && !cpPanel.contains(e.target) && e.target!==cpToggle){
-    cpPanel.classList.remove('open');
-  }
-});
-
-const THEME_KEY='matri_theme';
-let theme={ fs:1, text:'#2b2a26', head:'#222a35', bg:'#faf6f0' };
-
-function applyTheme(){
-  document.body.style.zoom = theme.fs; // scales layout + text together (Chrome/Edge/Safari)
-  document.documentElement.style.setProperty('--text', theme.text);
-  document.documentElement.style.setProperty('--navy', theme.head);
-  document.documentElement.style.setProperty('--ivory', theme.bg);
-  $('#cpTextColor').value=theme.text;
-  $('#cpHeadColor').value=theme.head;
-  $('#cpBgColor').value=theme.bg;
-}
-function saveTheme(){ localStorage.setItem(THEME_KEY, JSON.stringify(theme)); applyTheme(); }
-
-function loadTheme(){
-  const raw=localStorage.getItem(THEME_KEY);
-  if(raw){ try{ theme=Object.assign(theme, JSON.parse(raw)); }catch(e){} }
-  applyTheme();
-}
-loadTheme();
-
-$('#fsPlus').addEventListener('click', ()=>{ theme.fs=Math.min(1.3, +(theme.fs+0.05).toFixed(2)); saveTheme(); });
-$('#fsMinus').addEventListener('click', ()=>{ theme.fs=Math.max(0.8, +(theme.fs-0.05).toFixed(2)); saveTheme(); });
-$('#cpTextColor').addEventListener('input', e=>{ theme.text=e.target.value; saveTheme(); });
-$('#cpHeadColor').addEventListener('input', e=>{ theme.head=e.target.value; saveTheme(); });
-$('#cpBgColor').addEventListener('input', e=>{ theme.bg=e.target.value; saveTheme(); });
-$('#cpReset').addEventListener('click', ()=>{
-  theme={ fs:1, text:'#2b2a26', head:'#222a35', bg:'#faf6f0' };
-  saveTheme(); toast('Appearance reset');
-});
-
-/* ---------------- export a clean, view-only static copy ---------------- */
-function exportStatic(){
-  const clone = document.documentElement.cloneNode(true);
-
-  // strip editing affordances
-  clone.querySelectorAll('[contenteditable]').forEach(el=>el.removeAttribute('contenteditable'));
-  clone.querySelectorAll('input[type=file]').forEach(el=>el.remove());
-  clone.querySelectorAll('.img-adjust-bar,.adjust-hint,.customize-toggle,.customize-panel,.sticky-actions,.toast,.row-controls,.row-remove,.remove,.add-btn,.add-chip,.add-pill-btn,.x').forEach(el=>el.remove());
-  clone.querySelectorAll('.hero-upload,.story-photo .hint,.g-tile .hint').forEach(el=>{
-    if(el.classList && el.classList.contains('hero-upload')){
-      if(el.classList.contains('has-img')) el.remove(); else el.querySelector('.hint') && el.querySelector('.hint').remove();
-    } else { el.remove(); }
-  });
-  clone.querySelectorAll('.g-tile').forEach(t=>{ if(!t.querySelector('img')) t.remove(); });
-  clone.querySelectorAll('[id]').forEach(el=>{
-    if(['heroInput','storyInput','customizeToggle','customizePanel'].includes(el.id)) el.remove();
-  });
-  // bake current theme + font scale as static inline styles instead of JS
-  clone.style.zoom = theme.fs;
-  const styleTag = clone.querySelector('style');
-  if(styleTag){
-    styleTag.textContent += `\n:root{--text:${theme.text};--navy:${theme.head};--ivory:${theme.bg};}`;
-  }
-  // remove the entire editing script, keep only a tiny script for scroll-reveal + intro veil
-  clone.querySelectorAll('script').forEach(s=>s.remove());
-  const staticScript = document.createElement('script');
-  staticScript.textContent = `
     window.addEventListener('load',()=>{ const v=document.getElementById('veil'); if(v) setTimeout(()=>v.classList.add('hide'),1500); });
     const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:0.12});
     document.querySelectorAll('.reveal').forEach(s=>io.observe(s));
     setTimeout(()=>{ document.querySelectorAll('.reveal').forEach(s=>{ const r=s.getBoundingClientRect(); if(r.top<window.innerHeight) s.classList.add('in'); }); },50);
-  `;
-  clone.querySelector('body').appendChild(staticScript);
-
-  const html = '<!DOCTYPE html>\n' + clone.outerHTML;
-  const blob = new Blob([html], {type:'text/html'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'index.html';
-  document.body.appendChild(a); a.click(); a.remove();
-  toast('Downloaded — upload this to GitHub');
-}
-$('#exportBtn').addEventListener('click', exportStatic);
-
-</script>
-</body>
-</html>
+  </script></body></html>

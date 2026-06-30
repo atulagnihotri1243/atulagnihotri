@@ -106,17 +106,21 @@
   .info-head{text-align:center;margin-bottom:46px;}
   .info-head h2{font-size:32px;margin-top:8px;}
   .info-table{border:1px solid var(--line);border-radius:6px;overflow:hidden;}
-  .info-row{display:grid;grid-template-columns:200px 1fr 30px;border-bottom:1px solid var(--line);}
+  .info-row{display:grid;grid-template-columns:200px 1fr 64px;border-bottom:1px solid var(--line);}
   .info-row:last-child{border-bottom:none;}
   .info-row:nth-child(even){background:var(--paper);}
   .info-row .k{padding:14px 18px;font-size:13px;letter-spacing:.03em;color:var(--navy);font-weight:500;border-right:1px solid var(--line);
     display:flex;align-items:center;}
   .info-row .v{padding:14px 18px;font-size:14.5px;color:var(--text-soft);display:flex;align-items:center;}
-  .info-row .row-remove{display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--text-soft);opacity:0;
-    cursor:pointer;transition:opacity .15s;}
-  .info-row:hover .row-remove{opacity:.5;}
-  .info-row .row-remove:hover{opacity:1;color:#b15c4c;}
-  @media(max-width:600px){.info-row{grid-template-columns:130px 1fr 26px;}
+  .info-row .row-controls{display:flex;align-items:center;justify-content:center;gap:2px;opacity:0;transition:opacity .15s;}
+  .info-row:hover .row-controls{opacity:.6;}
+  .info-row .row-controls:hover{opacity:1;}
+  .info-row .row-controls button{width:18px;height:18px;border:none;background:none;color:var(--text-soft);font-size:11px;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;}
+  .info-row .row-controls button:hover{color:var(--rosegold);}
+  .info-row .row-controls .row-remove:hover{color:#b15c4c;}
+  .info-row .row-controls button:disabled{opacity:.25;cursor:default;}
+  @media(max-width:600px){.info-row{grid-template-columns:130px 1fr 56px;}
     .info-row .k{font-size:11.5px;padding:12px 10px;} .info-row .v{font-size:13px;padding:12px 10px;}}
   .about-family{margin-top:30px;font-size:15px;color:var(--text-soft);max-width:680px;margin-left:auto;margin-right:auto;text-align:center;}
 
@@ -364,6 +368,7 @@
 
 <div class="sticky-actions">
   <button class="pill-btn" onclick="window.print()">Save as PDF</button>
+  <button class="pill-btn" id="exportBtn" style="background:var(--sage-deep);border-color:var(--sage-deep);">Export Site (View-Only)</button>
 </div>
 
 <button class="customize-toggle" id="customizeToggle" title="Customize appearance">✎</button>
@@ -509,8 +514,18 @@ function makeInfoRow(key,val){
   row.innerHTML=`
     <div class="k" contenteditable="true" data-placeholder="Field name">${key}</div>
     <div class="v" contenteditable="true" data-placeholder="Value">${val}</div>
-    <span class="row-remove" onclick="this.parentElement.remove();save()">✕</span>`;
+    <div class="row-controls">
+      <button type="button" title="Move up" onclick="moveRow(this,-1)">▲</button>
+      <button type="button" title="Move down" onclick="moveRow(this,1)">▼</button>
+      <button type="button" class="row-remove" title="Remove" onclick="this.closest('.info-row').remove();save()">✕</button>
+    </div>`;
   return row;
+}
+function moveRow(btn, dir){
+  const row = btn.closest('.info-row');
+  if(dir===-1 && row.previousElementSibling) row.parentElement.insertBefore(row, row.previousElementSibling);
+  if(dir===1 && row.nextElementSibling) row.parentElement.insertBefore(row.nextElementSibling, row);
+  save();
 }
 function addInfoRow(tableId,key='New Field',val=''){
   $('#'+tableId).appendChild(makeInfoRow(key,val)); save();
@@ -712,6 +727,50 @@ $('#cpReset').addEventListener('click', ()=>{
   theme={ fs:1, text:'#2b2a26', head:'#222a35', bg:'#faf6f0' };
   saveTheme(); toast('Appearance reset');
 });
+
+/* ---------------- export a clean, view-only static copy ---------------- */
+function exportStatic(){
+  const clone = document.documentElement.cloneNode(true);
+
+  // strip editing affordances
+  clone.querySelectorAll('[contenteditable]').forEach(el=>el.removeAttribute('contenteditable'));
+  clone.querySelectorAll('input[type=file]').forEach(el=>el.remove());
+  clone.querySelectorAll('.img-adjust-bar,.adjust-hint,.customize-toggle,.customize-panel,.sticky-actions,.toast,.row-controls,.row-remove,.remove,.add-btn,.add-chip,.add-pill-btn,.x').forEach(el=>el.remove());
+  clone.querySelectorAll('.hero-upload,.story-photo .hint,.g-tile .hint').forEach(el=>{
+    if(el.classList && el.classList.contains('hero-upload')){
+      if(el.classList.contains('has-img')) el.remove(); else el.querySelector('.hint') && el.querySelector('.hint').remove();
+    } else { el.remove(); }
+  });
+  clone.querySelectorAll('.g-tile').forEach(t=>{ if(!t.querySelector('img')) t.remove(); });
+  clone.querySelectorAll('[id]').forEach(el=>{
+    if(['heroInput','storyInput','customizeToggle','customizePanel'].includes(el.id)) el.remove();
+  });
+  // bake current theme + font scale as static inline styles instead of JS
+  clone.style.zoom = theme.fs;
+  const styleTag = clone.querySelector('style');
+  if(styleTag){
+    styleTag.textContent += `\n:root{--text:${theme.text};--navy:${theme.head};--ivory:${theme.bg};}`;
+  }
+  // remove the entire editing script, keep only a tiny script for scroll-reveal + intro veil
+  clone.querySelectorAll('script').forEach(s=>s.remove());
+  const staticScript = document.createElement('script');
+  staticScript.textContent = `
+    window.addEventListener('load',()=>{ const v=document.getElementById('veil'); if(v) setTimeout(()=>v.classList.add('hide'),1500); });
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(s=>io.observe(s));
+    setTimeout(()=>{ document.querySelectorAll('.reveal').forEach(s=>{ const r=s.getBoundingClientRect(); if(r.top<window.innerHeight) s.classList.add('in'); }); },50);
+  `;
+  clone.querySelector('body').appendChild(staticScript);
+
+  const html = '<!DOCTYPE html>\n' + clone.outerHTML;
+  const blob = new Blob([html], {type:'text/html'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'index.html';
+  document.body.appendChild(a); a.click(); a.remove();
+  toast('Downloaded — upload this to GitHub');
+}
+$('#exportBtn').addEventListener('click', exportStatic);
 
 </script>
 </body>

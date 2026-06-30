@@ -64,9 +64,7 @@
     background:linear-gradient(180deg, rgba(34,42,53,0.08), rgba(34,42,53,0.55)), var(--navy);
     overflow:hidden;
   }
-  .hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.92;
-    transform:scale(1.06);transition:transform 6s ease;}
-  .hero.loaded .hero-photo{transform:scale(1);}
+  .hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.92;}
   .hero-upload{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2;}
   .hero-upload .hint{font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#fff;
     border:1px solid rgba(255,255,255,0.5);padding:14px 26px;border-radius:30px;background:rgba(0,0,0,0.18);backdrop-filter:blur(2px);}
@@ -102,6 +100,30 @@
   @media(max-width:640px){.vital{min-width:45%;border-right:none;padding:14px 10px;}}
   .vital .num{font-family:'Cormorant Garamond',serif;font-size:34px;color:var(--navy);}
   .vital .label{margin-top:6px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-soft);}
+
+  /* ---- biodata / info table ---- */
+  .info-section{padding:90px 0;}
+  .info-head{text-align:center;margin-bottom:46px;}
+  .info-head h2{font-size:32px;margin-top:8px;}
+  .info-table{border:1px solid var(--line);border-radius:6px;overflow:hidden;}
+  .info-row{display:grid;grid-template-columns:200px 1fr 30px;border-bottom:1px solid var(--line);}
+  .info-row:last-child{border-bottom:none;}
+  .info-row:nth-child(even){background:var(--paper);}
+  .info-row .k{padding:14px 18px;font-size:13px;letter-spacing:.03em;color:var(--navy);font-weight:500;border-right:1px solid var(--line);
+    display:flex;align-items:center;}
+  .info-row .v{padding:14px 18px;font-size:14.5px;color:var(--text-soft);display:flex;align-items:center;}
+  .info-row .row-remove{display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--text-soft);opacity:0;
+    cursor:pointer;transition:opacity .15s;}
+  .info-row:hover .row-remove{opacity:.5;}
+  .info-row .row-remove:hover{opacity:1;color:#b15c4c;}
+  @media(max-width:600px){.info-row{grid-template-columns:130px 1fr 26px;}
+    .info-row .k{font-size:11.5px;padding:12px 10px;} .info-row .v{font-size:13px;padding:12px 10px;}}
+  .about-family{margin-top:30px;font-size:15px;color:var(--text-soft);max-width:680px;margin-left:auto;margin-right:auto;text-align:center;}
+
+  .social-links{display:flex;justify-content:center;gap:46px;flex-wrap:wrap;margin-top:36px;}
+  .s-link{font-size:14px;text-align:center;}
+  .s-link .l{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-soft);margin-bottom:6px;}
+  .s-link .v{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--rosegold);font-style:italic;}
 
   /* ---- about / story ---- */
   .story{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;padding:100px 0;align-items:center;}
@@ -173,7 +195,52 @@
   .pill-btn{font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:11px 18px;border-radius:30px;border:1px solid var(--navy);
     background:var(--navy);color:#fff;cursor:pointer;box-shadow:0 6px 18px rgba(34,42,53,0.25);}
   .pill-btn:hover{background:var(--navy-soft);}
-  @media print{.sticky-actions,nav,.scroll-cue{display:none;}}
+  @media print{.sticky-actions,nav,.scroll-cue,.customize-toggle,.customize-panel,.img-adjust-bar{display:none;}}
+
+  /* ---- adjustable photos ---- */
+  .adjust-wrap{overflow:hidden;position:relative;}
+  .adjust-wrap img{width:100%;height:100%;object-fit:cover;cursor:grab;will-change:transform;user-select:none;-webkit-user-drag:none;}
+  .adjust-wrap img.dragging{cursor:grabbing;}
+  .img-adjust-bar{
+    position:absolute;left:50%;bottom:8px;transform:translateX(-50%);display:flex;gap:4px;
+    background:rgba(34,42,53,0.65);backdrop-filter:blur(3px);border-radius:30px;padding:5px 6px;
+    opacity:0;transition:opacity .2s;z-index:5;pointer-events:none;
+  }
+  .adjust-wrap:hover .img-adjust-bar{opacity:1;pointer-events:auto;}
+  .img-adjust-bar button{
+    width:24px;height:24px;border-radius:50%;border:none;background:rgba(255,255,255,0.15);color:#fff;
+    font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;
+  }
+  .img-adjust-bar button:hover{background:rgba(255,255,255,0.3);}
+  .adjust-hint{
+    position:absolute;top:8px;left:8px;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:#fff;
+    background:rgba(34,42,53,0.5);padding:4px 8px;border-radius:20px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:5;
+  }
+  .adjust-wrap:hover .adjust-hint{opacity:1;}
+
+  /* ---- customize panel ---- */
+  .customize-toggle{
+    position:fixed;left:24px;bottom:24px;z-index:150;width:46px;height:46px;border-radius:50%;
+    background:var(--navy);color:#fff;border:none;font-size:18px;cursor:pointer;box-shadow:0 6px 18px rgba(34,42,53,0.25);
+  }
+  .customize-toggle:hover{background:var(--navy-soft);}
+  .customize-panel{
+    position:fixed;left:24px;bottom:80px;z-index:151;background:var(--ivory);border:1px solid var(--line);
+    border-radius:14px;padding:18px 18px 14px;width:230px;box-shadow:0 12px 36px rgba(34,42,53,0.18);
+    opacity:0;visibility:hidden;transform:translateY(10px);transition:all .25s ease;
+  }
+  .customize-panel.open{opacity:1;visibility:visible;transform:translateY(0);}
+  .customize-panel .cp-title{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-soft);margin-bottom:12px;}
+  .cp-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+  .cp-row:last-child{margin-bottom:0;}
+  .cp-row label{font-size:12px;color:var(--navy);}
+  .cp-fs-controls{display:flex;align-items:center;gap:8px;}
+  .cp-fs-controls button{width:26px;height:26px;border-radius:50%;border:1px solid var(--line);background:none;cursor:pointer;font-size:13px;color:var(--navy);}
+  .cp-fs-controls button:hover{border-color:var(--rosegold);color:var(--rosegold);}
+  .cp-row input[type=color]{width:30px;height:26px;border:1px solid var(--line);border-radius:6px;padding:0;cursor:pointer;background:none;}
+  .cp-reset{width:100%;margin-top:4px;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-soft);
+    background:none;border:1px solid var(--line);border-radius:20px;padding:7px;cursor:pointer;}
+  .cp-reset:hover{color:var(--rosegold);border-color:var(--rosegold);}
 </style>
 </head>
 <body>
@@ -189,14 +256,20 @@
   <div class="logo" style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-family:'Jost',sans-serif;">Personal Profile</div>
 </nav>
 
-<section class="hero" id="heroSection">
+<section class="hero adjust-wrap" id="heroSection">
   <img class="hero-photo" id="heroPhoto" src="" alt="" style="display:none;">
   <div class="hero-upload" id="heroUpload"><span class="hint">Click to add your main photo</span></div>
+  <span class="adjust-hint" id="heroAdjustHint" style="display:none;">Drag to reposition</span>
+  <div class="img-adjust-bar" id="heroAdjustBar" style="display:none;">
+    <button type="button" data-act="zoomin" title="Zoom in">+</button>
+    <button type="button" data-act="zoomout" title="Zoom out">−</button>
+    <button type="button" data-act="reset" title="Reset">⟲</button>
+  </div>
   <input type="file" id="heroInput" accept="image/*">
   <div class="hero-content">
     <div class="eyebrow">A Little About Me</div>
     <h1 contenteditable="true" data-placeholder="Your Name">Atul Agnihotri</h1>
-    <div class="role" contenteditable="true" data-placeholder="Your role / what you do">Server &amp; DevOps Engineer · Himachal Pradesh, India</div>
+    <div class="role" contenteditable="true" data-placeholder="Your role / what you do">Server &amp; DevOps Engineer · Chandigarh, India</div>
   </div>
   <div class="scroll-cue"><span>Scroll</span><div class="line"></div></div>
 </section>
@@ -209,14 +282,27 @@
 
   <section class="reveal vitals" id="vitalsBlock">
     <div class="vital"><div class="num" contenteditable="true" data-placeholder="27">27</div><div class="label">Age</div></div>
-    <div class="vital"><div class="num" contenteditable="true" data-placeholder="5'6&quot;">5'6"</div><div class="label">Height</div></div>
+    <div class="vital"><div class="num" contenteditable="true" data-placeholder="5'5&quot;">5'5"</div><div class="label">Height</div></div>
     <div class="vital"><div class="num" contenteditable="true" data-placeholder="65 kg">65 kg</div><div class="label">Weight</div></div>
     <div class="vital"><div class="num" contenteditable="true" data-placeholder="Hindu">Hindu</div><div class="label">Religion</div></div>
-    <div class="vital"><div class="num" contenteditable="true" data-placeholder="Solan, HP">Himachal Pradesh</div><div class="label">Native Place</div></div>
+    <div class="vital"><div class="num" contenteditable="true" data-placeholder="Chandigarh">Chandigarh</div><div class="label">Based In</div></div>
+  </section>
+
+  <section class="reveal info-section" id="biodataBlock">
+    <div class="info-head"><div class="eyebrow">In Detail</div><h2>Biodata</h2></div>
+    <div class="info-table" id="biodataTable"></div>
+    <button class="add-btn" onclick="addInfoRow('biodataTable')">+ Add detail</button>
+  </section>
+
+  <section class="reveal info-section" id="familyBlock">
+    <div class="info-head"><div class="eyebrow">Roots</div><h2>Family Details</h2></div>
+    <div class="info-table" id="familyTable"></div>
+    <button class="add-btn" onclick="addInfoRow('familyTable')">+ Add detail</button>
+    <p class="about-family" contenteditable="true" data-placeholder="A few lines about your family — their values, how you were raised, what home feels like.">We're a close-knit, simple family from Himachal Pradesh. My father has worked as a driver with the Agriculture Department for years, and my mother has held our home together as a homemaker. I have one younger sister. We believe in honesty, respect for elders, and standing by each other — values I hope to carry into my own family one day.</p>
   </section>
 
   <section class="reveal story" id="storyBlock">
-    <div class="story-photo" id="storyPhoto"><span class="hint">Click to add a<br>personal photo</span></div>
+    <div class="story-photo adjust-wrap" id="storyPhoto"><span class="hint">Click to add a<br>personal photo</span></div>
     <input type="file" id="storyInput" accept="image/*">
     <div class="story-text">
       <div class="eyebrow">My Story</div>
@@ -241,6 +327,7 @@
     <div class="eyebrow">Beyond Work</div>
     <h2 style="margin-top:10px;">Interests &amp; Hobbies</h2>
     <div class="chip-row" id="chipRow">
+      <span class="chip">Trekking<span class="x" onclick="this.parentElement.remove();save()">✕</span></span>
       <span class="chip">Traveling<span class="x" onclick="this.parentElement.remove();save()">✕</span></span>
       <span class="chip">Cricket<span class="x" onclick="this.parentElement.remove();save()">✕</span></span>
       <span class="chip">Technology<span class="x" onclick="this.parentElement.remove();save()">✕</span></span>
@@ -263,7 +350,12 @@
     <div class="contact-grid">
       <div class="c-item"><span class="l">Phone</span><span class="v" contenteditable="true" data-placeholder="+91 00000 00000">+91 70186 51532</span></div>
       <div class="c-item"><span class="l">Email</span><span class="v" contenteditable="true" data-placeholder="email@example.com">atul.agnihotri.1243@gmail.com</span></div>
-      <div class="c-item"><span class="l">Location</span><span class="v" contenteditable="true" data-placeholder="City, State">Himachal Pradesh, India</span></div>
+      <div class="c-item"><span class="l">Location</span><span class="v" contenteditable="true" data-placeholder="City, State">Chandigarh, India</span></div>
+      <div class="c-item"><span class="l">Address</span><span class="v" contenteditable="true" data-placeholder="Full address">VPO Pansai, Teh. Nadaun, District Hamirpur</span></div>
+    </div>
+    <div class="social-links" id="socialLinks">
+      <div class="s-link"><span class="l">LinkedIn</span><span class="v" contenteditable="true" data-placeholder="linkedin.com/in/your-name"></span></div>
+      <div class="s-link"><span class="l">Instagram</span><span class="v" contenteditable="true" data-placeholder="instagram.com/your.handle"></span></div>
     </div>
   </section>
 </main>
@@ -272,6 +364,31 @@
 
 <div class="sticky-actions">
   <button class="pill-btn" onclick="window.print()">Save as PDF</button>
+</div>
+
+<button class="customize-toggle" id="customizeToggle" title="Customize appearance">✎</button>
+<div class="customize-panel" id="customizePanel">
+  <div class="cp-title">Customize Appearance</div>
+  <div class="cp-row">
+    <label>Font size</label>
+    <div class="cp-fs-controls">
+      <button type="button" id="fsMinus">−</button>
+      <button type="button" id="fsPlus">+</button>
+    </div>
+  </div>
+  <div class="cp-row">
+    <label>Text color</label>
+    <input type="color" id="cpTextColor" value="#2b2a26">
+  </div>
+  <div class="cp-row">
+    <label>Heading color</label>
+    <input type="color" id="cpHeadColor" value="#222a35">
+  </div>
+  <div class="cp-row">
+    <label>Background</label>
+    <input type="color" id="cpBgColor" value="#faf6f0">
+  </div>
+  <button class="cp-reset" id="cpReset">Reset to default</button>
 </div>
 
 <script>
@@ -292,25 +409,88 @@ window.addEventListener('load',()=>{ setTimeout(()=>$('#veil').classList.add('hi
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:0.12});
 $$('.reveal').forEach(s=>io.observe(s));
 
+/* ---------------- photo drag-to-reposition + zoom ---------------- */
+function applyImgTransform(img){
+  const x = parseFloat(img.dataset.x||0), y = parseFloat(img.dataset.y||0), s = parseFloat(img.dataset.s||1);
+  img.style.transform = `translate(${x}px,${y}px) scale(${s})`;
+}
+function enableImgAdjust(img){
+  if(!img || img.dataset.adjustBound) return;
+  img.dataset.adjustBound='1';
+  img.dataset.x = img.dataset.x || 0;
+  img.dataset.y = img.dataset.y || 0;
+  img.dataset.s = img.dataset.s || 1;
+  applyImgTransform(img);
+  let dragging=false, startX=0, startY=0, baseX=0, baseY=0;
+
+  function down(clientX,clientY){
+    dragging=true; img.classList.add('dragging');
+    startX=clientX; startY=clientY;
+    baseX=parseFloat(img.dataset.x||0); baseY=parseFloat(img.dataset.y||0);
+  }
+  function move(clientX,clientY){
+    if(!dragging) return;
+    img.dataset.x = baseX + (clientX-startX);
+    img.dataset.y = baseY + (clientY-startY);
+    applyImgTransform(img);
+  }
+  function up(){ if(!dragging) return; dragging=false; img.classList.remove('dragging'); save(); }
+
+  img.addEventListener('mousedown', e=>{ e.preventDefault(); down(e.clientX,e.clientY); });
+  window.addEventListener('mousemove', e=> move(e.clientX,e.clientY));
+  window.addEventListener('mouseup', up);
+  img.addEventListener('touchstart', e=>{ const t=e.touches[0]; down(t.clientX,t.clientY); }, {passive:true});
+  img.addEventListener('touchmove', e=>{ const t=e.touches[0]; move(t.clientX,t.clientY); }, {passive:true});
+  img.addEventListener('touchend', up);
+  img.addEventListener('wheel', e=>{
+    e.preventDefault();
+    let s=parseFloat(img.dataset.s||1);
+    s = Math.min(3, Math.max(1, s + (e.deltaY<0?0.08:-0.08)));
+    img.dataset.s=s; applyImgTransform(img); save();
+  }, {passive:false});
+
+  const bar = img.parentElement.querySelector('.img-adjust-bar');
+  if(bar){
+    bar.style.display='flex';
+    bar.querySelectorAll('button').forEach(btn=>{
+      btn.onclick = (e)=>{
+        e.stopPropagation();
+        let s=parseFloat(img.dataset.s||1);
+        if(btn.dataset.act==='zoomin') s=Math.min(3,s+0.15);
+        if(btn.dataset.act==='zoomout') s=Math.max(1,s-0.15);
+        if(btn.dataset.act==='reset'){ s=1; img.dataset.x=0; img.dataset.y=0; }
+        img.dataset.s=s; applyImgTransform(img); save();
+      };
+    });
+  }
+  const hint = img.parentElement.querySelector('.adjust-hint');
+  if(hint) hint.style.display='block';
+}
+
 /* hero photo upload */
 $('#heroUpload').addEventListener('click',()=>$('#heroInput').click());
 $('#heroInput').addEventListener('change',e=>{
   const f=e.target.files[0]; if(!f) return;
   fileToDataURL(f,url=>{
     const img=$('#heroPhoto'); img.src=url; img.style.display='block';
+    img.dataset.adjustBound=''; img.dataset.x=0; img.dataset.y=0; img.dataset.s=1;
     $('#heroSection').classList.add('loaded');
     const up=$('#heroUpload'); up.classList.add('has-img'); up.innerHTML='<span class="hint">Change photo</span>';
-    save(); toast('Photo updated');
+    enableImgAdjust(img);
+    save(); toast('Photo updated — drag or scroll to adjust');
   });
 });
 
 /* story photo */
-$('#storyPhoto').addEventListener('click',()=>$('#storyInput').click());
+$('#storyPhoto').addEventListener('click',(e)=>{ if(e.target.closest('.img-adjust-bar')) return; if(e.target.tagName==='IMG' && e.target.dataset.adjustBound) return; $('#storyInput').click(); });
 $('#storyInput').addEventListener('change',e=>{
   const f=e.target.files[0]; if(!f) return;
   fileToDataURL(f,url=>{
-    $('#storyPhoto').innerHTML=`<img src="${url}" alt="">`;
-    save(); toast('Photo updated');
+    $('#storyPhoto').innerHTML=`<img src="${url}" alt="">
+      <span class="adjust-hint">Drag to reposition</span>
+      <div class="img-adjust-bar"><button type="button" data-act="zoomin">+</button><button type="button" data-act="zoomout">−</button><button type="button" data-act="reset">⟲</button></div>`;
+    enableImgAdjust($('#storyPhoto img'));
+    save(); toast('Photo updated — drag or scroll to adjust');
   });
 });
 
@@ -321,6 +501,35 @@ function addChip(){
   chip.innerHTML=`${escapeHtml(name)}<span class="x" onclick="this.parentElement.remove();save()">✕</span>`;
   $('#chipRow').insertBefore(chip,$('.add-chip'));
   save();
+}
+
+/* biodata / family info rows */
+function makeInfoRow(key,val){
+  const row=document.createElement('div'); row.className='info-row';
+  row.innerHTML=`
+    <div class="k" contenteditable="true" data-placeholder="Field name">${key}</div>
+    <div class="v" contenteditable="true" data-placeholder="Value">${val}</div>
+    <span class="row-remove" onclick="this.parentElement.remove();save()">✕</span>`;
+  return row;
+}
+function addInfoRow(tableId,key='New Field',val=''){
+  $('#'+tableId).appendChild(makeInfoRow(key,val)); save();
+}
+function fillDefaultBiodata(){
+  const rows=[
+    ['Date of Birth','08 Jan 1999'],['Time of Birth','01:14 PM'],['Place of Birth','Pansai'],
+    ['Manglik','No'],['Religion','Hindu'],['Caste','Brahman'],['Gotra','Kundaiya'],
+    ['Height','5 ft 5 in'],['Weight','65 kg'],['Blood Group','B+'],
+    ['Education','M.C.A from H.P.T.U, Hamirpur'],['Profession','Server Administrator, Mohali (IT Company)']
+  ];
+  rows.forEach(([k,v])=> $('#biodataTable').appendChild(makeInfoRow(k,v)));
+}
+function fillDefaultFamily(){
+  const rows=[
+    ['Father\'s Name','Rajender Kumar'],['Father\'s Occupation','Driver at Agriculture Department, Palampur'],
+    ['Mother\'s Name','Sudesh Kumari'],['Mother\'s Occupation','Housewife'],['Siblings','1 younger sister']
+  ];
+  rows.forEach(([k,v])=> $('#familyTable').appendChild(makeInfoRow(k,v)));
 }
 
 /* timeline entries */
@@ -344,31 +553,43 @@ function addEducation(p='2020 — 2024',t='Degree',o='Institution',d=''){
 }
 
 /* gallery */
+function adjustBarHTML(){
+  return `<span class="adjust-hint">Drag to reposition</span>
+    <div class="img-adjust-bar"><button type="button" data-act="zoomin">+</button><button type="button" data-act="zoomout">−</button><button type="button" data-act="reset">⟲</button></div>`;
+}
 function makeTile(url){
-  const div=document.createElement('div'); div.className='g-tile';
-  div.innerHTML = url ? `<img src="${url}" alt=""><span class="remove" onclick="event.stopPropagation();this.parentElement.remove();save()">✕</span>`
+  const div=document.createElement('div'); div.className='g-tile adjust-wrap';
+  div.innerHTML = url ? `<img src="${url}" alt="">${adjustBarHTML()}<span class="remove" onclick="event.stopPropagation();this.parentElement.remove();save()">✕</span>`
                        : `<span class="hint">Add photo</span>`;
   const inp=document.createElement('input'); inp.type='file'; inp.accept='image/*';
   div.appendChild(inp);
-  div.addEventListener('click',(e)=>{ if(e.target.classList.contains('remove')) return; inp.click(); });
+  div.addEventListener('click',(e)=>{
+    if(e.target.classList.contains('remove')) return;
+    if(e.target.closest('.img-adjust-bar')) return;
+    if(e.target.tagName==='IMG' && e.target.dataset.adjustBound) return;
+    inp.click();
+  });
   inp.addEventListener('change',e=>{
     const f=e.target.files[0]; if(!f) return;
     fileToDataURL(f,u=>{
-      div.innerHTML=`<img src="${u}" alt=""><span class="remove" onclick="event.stopPropagation();this.parentElement.remove();save()">✕</span>`;
+      div.innerHTML=`<img src="${u}" alt="">${adjustBarHTML()}<span class="remove" onclick="event.stopPropagation();this.parentElement.remove();save()">✕</span>`;
       const inp2=document.createElement('input'); inp2.type='file'; inp2.accept='image/*'; div.appendChild(inp2);
       bindTileInput(div,inp2);
+      enableImgAdjust($('img',div));
       save();
     });
   });
+  if(url) enableImgAdjust($('img',div));
   return div;
 }
 function bindTileInput(div,inp){
   inp.addEventListener('change',e=>{
     const f=e.target.files[0]; if(!f) return;
     fileToDataURL(f,u=>{
-      div.innerHTML=`<img src="${u}" alt=""><span class="remove" onclick="event.stopPropagation();this.parentElement.remove();save()">✕</span>`;
+      div.innerHTML=`<img src="${u}" alt="">${adjustBarHTML()}<span class="remove" onclick="event.stopPropagation();this.parentElement.remove();save()">✕</span>`;
       const inp2=document.createElement('input'); inp2.type='file'; inp2.accept='image/*'; div.appendChild(inp2);
       bindTileInput(div,inp2);
+      enableImgAdjust($('img',div));
       save();
     });
   });
@@ -379,12 +600,15 @@ function addGalleryTile(url=''){ const t=makeTile(url); $('#galleryGrid').append
 function save(){
   const data={
     heroSrc: $('#heroPhoto').src && $('#heroPhoto').style.display!=='none' ? $('#heroPhoto').src : '',
+    heroX: $('#heroPhoto').dataset.x||0, heroY: $('#heroPhoto').dataset.y||0, heroS: $('#heroPhoto').dataset.s||1,
     storyHtml: $('#storyPhoto').innerHTML,
+    biodataHtml: $('#biodataTable').innerHTML,
+    familyHtml: $('#familyTable').innerHTML,
     careerHtml: $('#careerList').innerHTML,
     eduHtml: $('#eduList').innerHTML,
     chipRowHtml: $('#chipRow').innerHTML,
     galleryHtml: $('#galleryGrid').innerHTML,
-    editable: $$('[contenteditable="true"]').filter(el=>!el.closest('#careerList,#eduList')).map(el=>el.innerHTML)
+    editable: $$('[contenteditable="true"]').filter(el=>!el.closest('#careerList,#eduList,#biodataTable,#familyTable')).map(el=>el.innerHTML)
   };
   localStorage.setItem('matri_data', JSON.stringify(data));
 }
@@ -393,37 +617,102 @@ document.addEventListener('input',e=>{
   if(e.target.closest('[contenteditable]')){ clearTimeout(saveTimer); saveTimer=setTimeout(()=>{save();toast('Saved');},800); }
 });
 
+function rebindAdjustableImages(container){
+  $$('img', container).forEach(img=>{
+    img.removeAttribute('data-adjust-bound');
+    if(img.parentElement.querySelector('.img-adjust-bar')) enableImgAdjust(img);
+  });
+}
+
 function load(){
   const raw=localStorage.getItem('matri_data');
-  if(!raw){ addCareer('June 2025 — Present','Server Administrator / DevOps Engineer','Nexever Technologies','Managing Linux and Windows servers, data center operations, and 50+ hardware and cloud servers across providers.');
+  if(!raw){
+    addCareer('June 2025 — Present','Server Administrator / DevOps Engineer','Nexever Technologies','Managing Linux and Windows servers, data center operations, and 50+ hardware and cloud servers across providers.');
     addCareer('May 2023 — June 2025','Linux Administrator / DevOps Engineer','ToXSL Technologies','Managed production environments, configured Apache/Nginx, implemented monitoring with Nagios, and handled Docker-based deployments.');
     addEducation('2022','MCA','Himachal Pradesh Technical University','');
     addEducation('2020','BCA','Himachal Pradesh University','');
+    addEducation('2010 — 2017','Schooling, 6th – 12th','Jawahar Navodaya Vidyalaya, Dungrain, Hamirpur','');
+    fillDefaultBiodata();
+    fillDefaultFamily();
     for(let i=0;i<6;i++) addGalleryTile();
     return;
   }
   try{
     const data=JSON.parse(raw);
-    if(data.heroSrc){ const img=$('#heroPhoto'); img.src=data.heroSrc; img.style.display='block';
+    if(data.heroSrc){
+      const img=$('#heroPhoto'); img.src=data.heroSrc; img.style.display='block';
+      img.dataset.x=data.heroX||0; img.dataset.y=data.heroY||0; img.dataset.s=data.heroS||1;
       $('#heroSection').classList.add('loaded');
-      const up=$('#heroUpload'); up.classList.add('has-img'); up.innerHTML='<span class="hint">Change photo</span>'; }
+      const up=$('#heroUpload'); up.classList.add('has-img'); up.innerHTML='<span class="hint">Change photo</span>';
+      enableImgAdjust(img);
+    }
     $('#storyPhoto').innerHTML=data.storyHtml;
+    $('#biodataTable').innerHTML=data.biodataHtml||'';
+    $('#familyTable').innerHTML=data.familyHtml||'';
     $('#careerList').innerHTML=data.careerHtml;
     $('#eduList').innerHTML=data.eduHtml;
     $('#chipRow').innerHTML=data.chipRowHtml;
     $('#galleryGrid').innerHTML=data.galleryHtml;
+    rebindAdjustableImages($('#storyPhoto'));
+    rebindAdjustableImages($('#galleryGrid'));
     $$('.g-tile',document).forEach(div=>{
       const inp=$('input',div);
       if(inp) bindTileInput(div,inp);
-      div.addEventListener('click',(e)=>{ if(e.target.classList.contains('remove')) return; const i=$('input',div); if(i) i.click(); });
+      div.addEventListener('click',(e)=>{
+        if(e.target.classList.contains('remove')) return;
+        if(e.target.closest('.img-adjust-bar')) return;
+        if(e.target.tagName==='IMG' && e.target.dataset.adjustBound) return;
+        const i=$('input',div); if(i) i.click();
+      });
     });
-    const editables=$$('[contenteditable="true"]').filter(el=>!el.closest('#careerList,#eduList'));
+    const editables=$$('[contenteditable="true"]').filter(el=>!el.closest('#careerList,#eduList,#biodataTable,#familyTable'));
     editables.forEach((el,i)=>{ if(data.editable[i]!==undefined) el.innerHTML=data.editable[i]; });
   }catch(err){ console.error(err); }
 }
 load();
 
 setTimeout(()=>{ $$('.reveal').forEach(s=>{ const r=s.getBoundingClientRect(); if(r.top<window.innerHeight) s.classList.add('in'); }); },50);
+
+/* ---------------- customize panel: font size + colors ---------------- */
+const cpToggle=$('#customizeToggle'), cpPanel=$('#customizePanel');
+cpToggle.addEventListener('click', ()=> cpPanel.classList.toggle('open'));
+document.addEventListener('click', (e)=>{
+  if(cpPanel.classList.contains('open') && !cpPanel.contains(e.target) && e.target!==cpToggle){
+    cpPanel.classList.remove('open');
+  }
+});
+
+const THEME_KEY='matri_theme';
+let theme={ fs:1, text:'#2b2a26', head:'#222a35', bg:'#faf6f0' };
+
+function applyTheme(){
+  document.body.style.zoom = theme.fs; // scales layout + text together (Chrome/Edge/Safari)
+  document.documentElement.style.setProperty('--text', theme.text);
+  document.documentElement.style.setProperty('--navy', theme.head);
+  document.documentElement.style.setProperty('--ivory', theme.bg);
+  $('#cpTextColor').value=theme.text;
+  $('#cpHeadColor').value=theme.head;
+  $('#cpBgColor').value=theme.bg;
+}
+function saveTheme(){ localStorage.setItem(THEME_KEY, JSON.stringify(theme)); applyTheme(); }
+
+function loadTheme(){
+  const raw=localStorage.getItem(THEME_KEY);
+  if(raw){ try{ theme=Object.assign(theme, JSON.parse(raw)); }catch(e){} }
+  applyTheme();
+}
+loadTheme();
+
+$('#fsPlus').addEventListener('click', ()=>{ theme.fs=Math.min(1.3, +(theme.fs+0.05).toFixed(2)); saveTheme(); });
+$('#fsMinus').addEventListener('click', ()=>{ theme.fs=Math.max(0.8, +(theme.fs-0.05).toFixed(2)); saveTheme(); });
+$('#cpTextColor').addEventListener('input', e=>{ theme.text=e.target.value; saveTheme(); });
+$('#cpHeadColor').addEventListener('input', e=>{ theme.head=e.target.value; saveTheme(); });
+$('#cpBgColor').addEventListener('input', e=>{ theme.bg=e.target.value; saveTheme(); });
+$('#cpReset').addEventListener('click', ()=>{
+  theme={ fs:1, text:'#2b2a26', head:'#222a35', bg:'#faf6f0' };
+  saveTheme(); toast('Appearance reset');
+});
+
 </script>
 </body>
 </html>
